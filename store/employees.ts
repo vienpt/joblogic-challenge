@@ -17,7 +17,7 @@ export interface Employee {
 export const useEmployeesStore = defineStore('employees', {
   state: (): State => ({
     employees: [],
-    popularity: 0,
+    popularity: 1,
   }),
   getters: {
     getEmployees(state) {

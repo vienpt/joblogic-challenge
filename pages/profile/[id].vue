@@ -40,9 +40,9 @@ function updateSliderPopularity(popularity: string, id: number) {
             type="range"
             v-model="sliderPopularity"
             @input="updateSliderPopularity($event.target.value, employeeProfile.id)"
-            min="0"
-            max="10"
-          >{{ sliderPopularity }}
+            min="1"
+            max="9"
+          />
         </div>
         <div class="bg-gray-800 p-5 max-w-[640px]">
           <p class="font-bold text-xl mb-2">Biography</p>

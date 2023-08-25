@@ -13,7 +13,11 @@
       <div class="sidebar-content_items">
         <div v-for="emp in employees" :key="emp.id">
           <NuxtLink :to="`/profile/${emp.id}`">
-            <span :class="[popularity !== 0 ? `text-${POPULARITY[popularity]}` : `text-${POPULARITY[emp.popularity]}`]">{{ emp.name }}</span>
+            <span
+              :style="{ fontSize: `${useEmployees.popularity && emp.popularity}em !important` }"
+            >
+              {{ emp.name }}
+            </span>
           </NuxtLink>
           <ul class="sidebar-content_items-colleagues">
             <li class="cursor-default" v-for="(colleague, index) in emp.colleagues" :key="index">
