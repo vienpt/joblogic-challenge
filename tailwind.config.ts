@@ -6,6 +6,9 @@ export default <Partial<Config>>{
     extend: {
       maxWidth: {
         '9xl': '96rem'
+      },
+      backgroundImage: {
+        'header': "url('/images/header/godfather-header.jpg')",
       }
     }
   },

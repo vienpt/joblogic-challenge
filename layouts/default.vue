@@ -1,35 +1,20 @@
 <template>
   <div class="main">
-    <!-- left sidebar -->
     <Nav></Nav>
 
-    <!-- right main -->
-    <div class="main-section">
-      <!-- main header -->
+    <main>
       <TheHeader></TheHeader>
-      <!-- main content -->
-      <main class="main-section_container overflow-y-auto">
+
+      <div class="pl-80 bg-gray-700 h-[100vh]">
         <slot></slot>
-      </main>
-    </div>
+      </div>
+    </main>
   </div>
 </template>
 
+<script setup lang="ts"></script>
 <style lang="postcss">
-  .main {
-    display: grid;
-    grid-template-columns: fit-content(260px) minmax(0, 1fr);
-    height: 100vh;
-    overflow: hidden;
-  }
-
-  .main-section {
-    display: grid;
-    grid-template-rows: auto 1fr;
-    overflow-y: scroll;
-
-    &_container {
-      @apply px-10 pb-20;
-    }
-  }
+.main {
+  @apply flex flex-col mx-auto overflow-hidden h-[100vh];
+}
 </style>

@@ -28,12 +28,14 @@ function updateSliderPopularity(popularity: string, id: number) {
             width="128"
             height="128"
             sizes="xs:128px md:350px"
-            class="md:absolute -top-2"
+            class="md:absolute -top-10 shadow-xl shadow-black/40"
           />
         </figure>
       </div>
       <div class="flex flex-col md:col-span-3 gap-4">
-        <h2 class="text-3xl">{{ employeeProfile.name }}</h2>
+        <div class="relative">
+          <p class="text-4xl md:absolute -top-10">{{ employeeProfile.name }}</p>
+        </div>
         <div class="flex items-center gap-3 max-w-[640px]">
           <p>Popularity</p>
           <input
@@ -44,9 +46,9 @@ function updateSliderPopularity(popularity: string, id: number) {
             max="9"
           />
         </div>
-        <div class="bg-gray-800 p-5 max-w-[640px]">
+        <div class="bg-gray-900 p-5 max-w-[640px]">
           <p class="font-bold text-xl mb-2">Biography</p>
-          <article class="text-slate-500">{{ employeeProfile.biography }}</article>
+          <article class="text-gray-400">{{ employeeProfile.biography }}</article>
         </div>
       </div>
     </div>

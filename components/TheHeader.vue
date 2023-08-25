@@ -1,11 +1,3 @@
 <template>
-  <figure>
-    <nuxt-picture
-      src="/images/header/godfather-header.jpg"
-      width="1980"
-      height="500"
-      sizes="xs:128px md:350px"
-      class="object-contain"
-    />
-  </figure>
+  <div class=" h-96 bg-cover bg-left-top bg-no-repeat bg-header" />
 </template>

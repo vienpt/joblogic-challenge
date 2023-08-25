@@ -12,7 +12,7 @@
     <div class="sidebar-content">
       <div class="sidebar-content_items">
         <div v-for="emp in employees" :key="emp.id">
-          <NuxtLink :to="`/profile/${emp.id}`">
+          <NuxtLink :to="`/profile/${emp.id}`" active-class="bg-blue-500">
             <span
               :style="{ fontSize: `${useEmployees.popularity && emp.popularity}em !important` }"
             >
@@ -33,42 +33,32 @@
 <script setup lang="ts">
 import Logo from "~/components/Svg/Logo.vue";
 import {useEmployeesStore} from "~/store/employees";
-import {POPULARITY} from "~/type";
+
 const useEmployees = useEmployeesStore()
-const popularity = ref(0)
 const employees = computed(() => useEmployees.getEmployees)
-
-watch(() => useEmployees.popularity, (val) => {
-  if (val) {
-    nextTick(() => {
-      popularity.value = val
-    })
-  }
-
-})
 </script>
 
 <style lang="postcss" scoped>
   .sidebar {
-    height: auto;
+    height: 100%;
     width: 260px;
+    position: absolute;
+    left: 0;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 250px auto;
+    grid-template-rows: 350px auto;
     grid-template-areas:
       "logo"
       "items";
-    background-color: #262626;
 
+    background-color: rgba(0,0,0, 0.4);
 
     &-header {
       grid-area: logo;
-      opacity: 0.5;
       @apply flex justify-center items-center;
     }
 
     &-content {
-      opacity: 1;
       grid-area: items;
       @apply mt-20 overflow-y-auto overflow-x-hidden text-center;
 
