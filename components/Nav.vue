@@ -46,11 +46,10 @@ const employees = computed(() => useEmployees.getEmployees)
     left: 0;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 350px auto;
+    grid-template-rows: min(250px, 350px) auto;
     grid-template-areas:
       "logo"
       "items";
-
     background-color: rgba(0,0,0, 0.4);
 
     &-header {

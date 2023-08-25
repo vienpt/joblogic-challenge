@@ -2,7 +2,7 @@
   <div class="main">
     <Nav></Nav>
 
-    <main>
+    <main class="overflow-y-auto">
       <TheHeader></TheHeader>
 
       <div class="pl-80 bg-gray-700 h-[100vh]">

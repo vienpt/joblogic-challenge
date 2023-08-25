@@ -44,6 +44,7 @@ function updateSliderPopularity(popularity: string, id: number) {
             @input="updateSliderPopularity($event.target.value, employeeProfile.id)"
             min="1"
             max="9"
+            class="w-full"
           />
         </div>
         <div class="bg-gray-900 p-5 max-w-[640px]">
