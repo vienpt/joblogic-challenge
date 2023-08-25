@@ -15,12 +15,6 @@
   </div>
 </template>
 
-<script setup lang="ts">
-// import { employees } from "@/data.ts"
-
-// console.log('employee', employees)
-</script>
-
 <style lang="postcss">
   .main {
     display: grid;
@@ -32,7 +26,7 @@
   .main-section {
     display: grid;
     grid-template-rows: auto 1fr;
-    //overflow-y: scroll;
+    overflow-y: scroll;
 
     &_container {
       @apply px-10 pb-20;

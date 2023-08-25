@@ -52,7 +52,3 @@ function updateSliderPopularity(popularity: string, id: number) {
     </div>
 
 </template>
-
-<style scoped lang="postcss">
-
-</style>
