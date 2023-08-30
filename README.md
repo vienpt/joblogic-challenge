@@ -37,4 +37,5 @@ yarn dev
 - Nuxt 3
 - Pinia
 - Nuxt-UI
+- Nuxt-Image (should be `^1.0.0-rc.1` without issue in production)
 - TailwindCSS
