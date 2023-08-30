@@ -17,10 +17,9 @@
             active-class="bg-blue-500"
             @click="useEmployees.setCurrentActiveItem(emp.id)"
           >
-            <span
-              :style="{
-                fontSize: `${useEmployees.popularity && emp.popularity}0px !important`
-              }"
+            <span :style="{
+              fontSize: `${useEmployees.popularity && emp.popularity}0px !important`
+             }"
             >
               {{ emp.name }}
             </span>
@@ -30,9 +29,9 @@
               v-for="(colleague, index) in emp.colleagues"
               :key="index"
             >
-                <span class="italic cursor-not-allowed" :class="useEmployees.currentActiveItem === emp.id ? 'text-blue-800' : ''">
-                  {{ colleague }}
-                </span>
+              <span :class="['italic cursor-not-allowed', useEmployees.currentActiveItem === emp.id ? 'text-blue-400' : '']">
+                {{ colleague }}
+              </span>
             </li>
           </ul>
 
@@ -49,7 +48,13 @@ import {useEmployeesStore} from "~/store/employees";
 const useEmployees = useEmployeesStore()
 const employees = computed(() => useEmployees.getEmployees)
 
-const activeItem = ref(false)
+const route = useRoute()
+
+onMounted(() => {
+  if (route.params?.id) {
+    useEmployees.setCurrentActiveItem(+route.params.id)
+  }
+})
 </script>
 
 <style lang="postcss" scoped>

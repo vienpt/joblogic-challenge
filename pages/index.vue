@@ -1,5 +1,10 @@
 <template>
-  <h1 class="text-5xl">
-    Wanna see who?
-  </h1>
+  <slot />
 </template>
+
+<script setup lang="ts">
+const router = useRouter()
+onBeforeMount(() => {
+  router.push({ path: `/profile/1`})
+})
+</script>
