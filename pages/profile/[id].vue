@@ -15,6 +15,10 @@ const sliderPopularity = ref(employeeProfile.value.popularity)
 function updateSliderPopularity(popularity: string, id: number) {
   useEmployees.setPopularity(popularity, id)
 }
+
+onBeforeMount(() => {
+  useEmployees.setCurrentActiveItem(profileId)
+})
 </script>
 
 
