@@ -2,7 +2,8 @@ import { defineStore } from "pinia";
 
 interface State {
   employees: Employee[],
-  popularity: number
+  popularity: number,
+  currentActiveItem: number
 }
 
 export interface Employee {
@@ -18,6 +19,7 @@ export const useEmployeesStore = defineStore('employees', {
   state: (): State => ({
     employees: [],
     popularity: 1,
+    currentActiveItem: 0,
   }),
   getters: {
     getEmployees(state) {
@@ -62,6 +64,9 @@ export const useEmployeesStore = defineStore('employees', {
       const index = this.employees.findIndex((f) => f.id === id)
       this.employees[index].popularity = +popularity
       this.popularity = +popularity
+    },
+    setCurrentActiveItem(idx: number) {
+      this.currentActiveItem = idx
     }
   }
 })

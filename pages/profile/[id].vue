@@ -1,12 +1,11 @@
 
 <script setup lang="ts">
-
 import {Employee, useEmployeesStore} from "~/store/employees";
 
 const route = useRoute()
 const useEmployees = useEmployeesStore()
-
 const profileId = +route.params?.id
+
 const employeeProfile = computed(() => {
   return useEmployees.getEmployees.find((f) => f.id === profileId) as Employee
 })
@@ -32,25 +31,30 @@ function updateSliderPopularity(popularity: string, id: number) {
           />
         </figure>
       </div>
-      <div class="flex flex-col md:col-span-3 gap-4">
+      <div class="flex flex-col md:col-span-3 gap-4 max-w-[640px] text-white">
         <div class="relative">
-          <p class="text-4xl md:absolute -top-10">{{ employeeProfile.name }}</p>
+          <p class="text-4xl md:absolute -top-10 bg-gray-800/20">{{ employeeProfile.name }}</p>
         </div>
-        <div class="flex items-center gap-3 max-w-[640px]">
-          <p>Popularity</p>
-          <input
-            type="range"
+        <div class="inline-flex items-center gap-4">
+          <span class="text-xl text-white">Popularity</span>
+          <URange
             v-model="sliderPopularity"
+            :min="1"
+            :max="10"
             @input="updateSliderPopularity($event.target.value, employeeProfile.id)"
-            min="1"
-            max="9"
-            class="w-full"
           />
         </div>
-        <div class="bg-gray-900 p-5 max-w-[640px]">
-          <p class="font-bold text-xl mb-2">Biography</p>
+        <UCard
+          :ui="{
+            background: 'bg-gray-900',
+          }"
+        >
+          <template #header>
+            <p class="font-bold text-xl text-white">Biography</p>
+          </template>
+
           <article class="text-gray-400">{{ employeeProfile.biography }}</article>
-        </div>
+        </UCard>
       </div>
     </div>
 

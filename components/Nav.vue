@@ -11,19 +11,31 @@
 <!--    content-->
     <div class="sidebar-content">
       <div class="sidebar-content_items">
-        <div v-for="emp in employees" :key="emp.id">
-          <NuxtLink :to="`/profile/${emp.id}`" active-class="bg-blue-500">
+        <div v-for="(emp, idx) in employees" :key="emp.id">
+          <NuxtLink
+            :to="`/profile/${emp.id}`"
+            active-class="bg-blue-500"
+            @click="useEmployees.setCurrentActiveItem(emp.id)"
+          >
             <span
-              :style="{ fontSize: `${useEmployees.popularity && emp.popularity}em !important` }"
+              :style="{
+                fontSize: `${useEmployees.popularity && emp.popularity}0px !important`
+              }"
             >
               {{ emp.name }}
             </span>
           </NuxtLink>
-          <ul class="sidebar-content_items-colleagues">
-            <li class="cursor-default" v-for="(colleague, index) in emp.colleagues" :key="index">
-              <span class="italic">{{ colleague }}</span>
+          <ul class="sidebar-content_items-colleagues !pointer-events-none">
+            <li
+              v-for="(colleague, index) in emp.colleagues"
+              :key="index"
+            >
+                <span class="italic cursor-not-allowed" :class="useEmployees.currentActiveItem === emp.id ? 'text-blue-800' : ''">
+                  {{ colleague }}
+                </span>
             </li>
           </ul>
+
         </div>
       </div>
     </div>
@@ -36,17 +48,19 @@ import {useEmployeesStore} from "~/store/employees";
 
 const useEmployees = useEmployeesStore()
 const employees = computed(() => useEmployees.getEmployees)
+
+const activeItem = ref(false)
 </script>
 
 <style lang="postcss" scoped>
   .sidebar {
     height: 100%;
-    width: 260px;
+    width: 350px;
     position: absolute;
     left: 0;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: min(250px, 350px) auto;
+    grid-template-rows: min(320px, 400px) auto;
     grid-template-areas:
       "logo"
       "items";
@@ -59,7 +73,7 @@ const employees = computed(() => useEmployees.getEmployees)
 
     &-content {
       grid-area: items;
-      @apply mt-20 overflow-y-auto overflow-x-hidden text-center;
+      @apply mt-20 overflow-y-auto overflow-x-hidden text-center text-white;
 
       &_items {
         @apply flex flex-col p-5;
